@@ -10,48 +10,17 @@ const iconMap: Record<string, React.ElementType> = {
 
 function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-soft" />
-        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-accent/3 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/2 rounded-full blur-[100px]" />
-      </div>
-
-      <div className="section-container relative z-10 py-24 md:py-32">
-        <div className="max-w-4xl">
-          <div className="animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-caption text-txt-secondary mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-soft" />
-              Remote-First Digital Studio
-            </div>
-          </div>
-
-          <h1 className="text-display-lg md:text-7xl lg:text-display-lg font-bold tracking-tight leading-[1.05] animate-fade-in-up">
-            We build digital
-            <br />
-            products that
-            <br />
-            <span className="text-gradient">push beyond</span>
-          </h1>
-
-          <p className="mt-8 text-body-lg text-txt-secondary max-w-xl leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            ShoverHub is a lean, focused studio crafting apps, websites, and tools
-            for clients worldwide. No fluff — just exceptional products.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <Link to="/services" className="btn-primary gap-2">
-              Our Services
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link to="/products" className="btn-secondary gap-2">
-              View Products
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
+    <section className="relative pt-32 pb-xl px-8 max-w-7xl mx-auto z-10">
+      <header className="mb-lg space-y-4 parallax-layer" data-speed="0.05">
+        <div className="flex items-center gap-3">
+          <span className="w-12 h-[1px] bg-accent"></span>
+          <span className="font-label-caps text-label-caps text-accent uppercase tracking-widest">Excellence in Motion</span>
         </div>
-      </div>
+        <h1 className="font-display-lg text-display-lg text-txt">We build digital products that <span className="text-glow text-accent">push beyond.</span></h1>
+        <p className="font-body-lg text-body-lg text-txt-secondary max-w-2xl leading-relaxed">
+          ShoverHub is a curation of digital products engineered with precision and designed for the next generation of global interfaces.
+        </p>
+      </header>
     </section>
   );
 }
@@ -102,9 +71,9 @@ function FeaturedProducts() {
         <ScrollReveal>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="text-caption text-accent font-medium tracking-widest uppercase mb-3">Products</p>
-              <h2 className="text-heading-lg md:text-display-sm font-bold tracking-tight">
-                What we've built
+              <p className="font-label-caps text-label-caps text-accent uppercase tracking-widest mb-3">Selected Works</p>
+              <h2 className="text-heading-lg md:text-display-sm font-bold tracking-tight text-txt">
+                Curation of digital products
               </h2>
             </div>
             <Link to="/products" className="hidden sm:inline-flex btn-ghost gap-1.5">
@@ -113,46 +82,49 @@ function FeaturedProducts() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {products.slice(0, 3).map((product, i) => {
-            const Icon = iconMap[product.icon];
+        <div className="perspective-container grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          {products.slice(0, 4).map((product, i) => {
+            const isLarge = i === 0;
             return (
-              <ScrollReveal key={product.id} delay={i * 100} className={i === 2 ? 'md:col-span-2' : ''}>
-                <GlassCard padding="lg" className="group h-full flex flex-col relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `${product.color}15` }} />
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl" style={{ background: `${product.color}15` }}>
-                      {Icon && <Icon className="w-6 h-6" style={{ color: product.color }} />}
+              <ScrollReveal 
+                key={product.id} 
+                delay={i * 100} 
+                className={isLarge ? 'md:col-span-8' : 'md:col-span-4'}
+              >
+                <GlassCard padding="none" className="group relative overflow-hidden h-full">
+                  <div className={`w-full relative overflow-hidden ${isLarge ? 'aspect-[16/9]' : 'aspect-square md:aspect-[4/3]'}`}>
+                    <img 
+                      className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+                      src={product.image} 
+                      alt={product.title}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {(product as any).tags?.map((tag: string) => (
+                        <span key={tag} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 font-label-caps text-[10px] text-accent uppercase tracking-wider">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                    {product.status === 'live' && product.url && (
+                    <h3 className={`font-display font-bold text-white mb-2 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
+                      {product.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm max-w-md line-clamp-2 mb-4">
+                      {product.description}
+                    </p>
+                    {product.url && (
                       <a
                         href={product.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-lg text-txt-tertiary hover:text-accent hover:bg-surface-hover transition-all"
-                        aria-label={`Visit ${product.title}`}
+                        className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 flex items-center gap-2 text-accent font-button text-sm transition-all duration-300"
                       >
-                        <ArrowUpRight className="w-5 h-5" />
+                        View Project <ArrowUpRight className="w-4 h-4" />
                       </a>
                     )}
                   </div>
-                  <h3 className="text-heading-sm font-semibold">{product.title}</h3>
-                  <p className="mt-2 text-body-sm text-txt-secondary leading-relaxed flex-1">{product.description}</p>
-                  {product.status === 'live' && product.url && (
-                    <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-                    >
-                      Visit product <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {product.status === 'coming-soon' && (
-                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-txt-tertiary">
-                      <Rocket className="w-3.5 h-3.5" /> In development
-                    </span>
-                  )}
                 </GlassCard>
               </ScrollReveal>
             );

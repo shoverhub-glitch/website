@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 
@@ -9,10 +9,21 @@ interface LayoutProps {
 }
 
 export function Layout({ children, isDark, toggleTheme }: LayoutProps) {
+  useEffect(() => {
+    const handleScroll = () => {
+      document.documentElement.style.setProperty('--scroll-y', `${window.pageYOffset}`);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <div className="bg-mesh-dynamic" id="mesh-bg"></div>
+      <div className="grain-overlay"></div>
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <main className="flex-1 pt-16 md:pt-18" role="main">
+      <main className="flex-1 pt-20" role="main">
         {children}
       </main>
       <Footer />

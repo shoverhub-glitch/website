@@ -59,16 +59,9 @@ export const products = [
     url: 'https://hostelmanager.shoverhub.com',
     status: 'live' as const,
     icon: 'Building2',
-    color: '#22c55e',
-  },
-  {
-    id: 'vcard',
-    title: 'VCard',
-    description: 'Digital invitations and business cards with templates, sharing, customisation, and mobile optimisation.',
-    url: 'https://vcard.shoverhub.com',
-    status: 'live' as const,
-    icon: 'CreditCard',
-    color: '#3b82f6',
+    color: '#00f0ff',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBoT35P4YhRZGJEzPca_kSja6YcZH6dOI2oOkQaBp6VrPTSATaEfpqC7Rh98Bx7VOv7umzkFW_xi1ettSOIu3mj9Al8d7XbBZw_2u4_0uEcCMYpznbCXF3QVPP9hVLbRdAahRN6ESmjjn5ZCLI6Cx1jSKjVIsCDcbGP1Pe4E4j8WUD0-uf0-nfVAX2L0OH8H2Slox64PR3TWQfSZVjt9F9xjcxVee0HxNjKL4c5Hq55P28I2NlVzC34S1JGveLc_0SpNmJ8xkAnrKXx',
+    tags: ['SaaS', 'Management']
   },
   {
     id: 'blog',
@@ -77,7 +70,9 @@ export const products = [
     url: 'https://blog.shoverhub.com',
     status: 'live' as const,
     icon: 'BookOpen',
-    color: '#f59e0b',
+    color: '#00f89e',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCLPJtEku8K-HcoTHZFoxmLxERtcTH0iw-OuebL8T1k4_oYzwgX5vsutUARaCWSKJFqpY1vHFr5q-vOXcO4oZZBIVEFK-zBbZNAluYYpu4ksXP2xfdK4hDZagpkCVFQUNORdSQXd_ET7bg0exTrkWtdAzelGhCAdjUmsWVd3FbNgzLOVpUdOmzpN0HZ7EI8Du9BwLI6OtpVyVZFyNlN36gRKJAsfO8u4oZyBSVz_IBSWgo5IAh5-QcwKER1qLk0lqBiQhjH4mYZOdkK',
+    tags: ['Insights', 'Culture']
   },
   {
     id: 'coming-soon',
@@ -87,6 +82,8 @@ export const products = [
     status: 'coming-soon' as const,
     icon: 'Rocket',
     color: '#8b5cf6',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBFnCBAUaiExjuWIe9jAsxiJS3euQwQ5j7kavue1k6jwmXROqUt6dWFjbaP6IpOWUFnq4Gkyp5pjIoG6DDX3FwwKwGOBwpNZbFLo3j_rTgQvRMu-EV-bhJiMU6Z4JY1E-LQnzf_4wYnq19JhS7QcZcugUhz92sKWxtjl6s108MrHmTvwqf11FaRWgaZwajY-eSBXiyAO5SdSbPTld_8mFaV9-EMJICZGb3Ph5cWiFQNoQbajVVzW1sXQS3YpjETCbQW8VS9Wtqb-WDr',
+    tags: ['Future', 'Innovation']
   },
 ];
 
