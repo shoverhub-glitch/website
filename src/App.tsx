@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Layout } from './components';
 import { useTheme } from './hooks';
@@ -12,7 +12,6 @@ import {
   Privacy,
   Terms,
   Cookies,
-  NotFound,
 } from './pages';
 
 function ScrollToTop() {
@@ -39,7 +38,7 @@ function AppContent() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/cookies" element={<Cookies />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
   );
