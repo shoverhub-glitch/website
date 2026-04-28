@@ -5,9 +5,7 @@ export const siteConfig = {
   url: 'https://shoverhub.com',
   email: 'contact@shoverhub.com',
   social: {
-    twitter: 'https://twitter.com/shoverhub',
-    github: 'https://github.com/shoverhub',
-    linkedin: 'https://linkedin.com/company/shoverhub',
+    instagram: 'https://instagram.com/shoverhub',
   },
 };
 

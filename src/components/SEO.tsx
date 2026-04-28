@@ -37,11 +37,6 @@ export function SEO({ title, description, canonical, type = 'website', image }: 
     setMeta('og:type', type);
     setMeta('og:image', ogImage);
     setMeta('og:site_name', siteConfig.name);
-    setMeta('twitter:card', 'summary_large_image');
-    setMeta('twitter:site', '@shoverhub');
-    setMeta('twitter:title', fullTitle);
-    setMeta('twitter:description', desc);
-    setMeta('twitter:image', ogImage);
 
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!link) {
